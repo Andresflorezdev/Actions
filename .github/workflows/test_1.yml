@@ -16,10 +16,12 @@ jobs:
       - name: Set text
         run: echo "Hola Mundo" >> hola.txt
 
+      - name: Read file
+        run: cat hola.txt
 
   other:
     runs-on: ubuntu-latest
-
+    needs: hola
     steps:
     - name: LS
       run: ls -la
