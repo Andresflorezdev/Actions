@@ -12,7 +12,7 @@ jobs:
 
       - name: list files
         run: |
-          ls -la
+          ls -l
 
       - name: Run Local Action
         uses: ./.github/actions/my-action
