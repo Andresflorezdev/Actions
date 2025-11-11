@@ -11,4 +11,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Local Action
-        uses: .github/actions/my-action
+        uses: ./.github/actions/my-action
