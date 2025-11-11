@@ -6,16 +6,10 @@ jobs:
   test-build:
     runs-on: ubuntu-latest
 
-    services:
-      redis:
-        image: redis:7-alpine
-        ports:
-          - 6379:6379
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+    env:
+      NODE_ENV: production
+      APP_NAME: Mi Aplicación
+      VERSION: 1.0.0
 
     steps:
       - name: Checkout
@@ -30,12 +24,16 @@ jobs:
         with:
           message: "Hello world"
 
-      - name: Test Redis Service
+      - name: Mostrar Variables de Entorno
+        env:
+          STEP_VARIABLE: "Esta es una variable solo de este step"
+          API_KEY: "mi-api-key-secreta"
         run: |
-          echo "Probando conexión con Redis..."
-          sudo apt-get update
-          sudo apt-get install -y redis-tools
-          redis-cli -h localhost -p 6379 ping
-          redis-cli -h localhost -p 6379 set test "Servicio funcionando!"
-          redis-cli -h localhost -p 6379 get test
-          echo "✅ Redis está funcionando correctamente"
+          echo "Variables de entorno del job:"
+          echo "NODE_ENV = $NODE_ENV"
+          echo "APP_NAME = $APP_NAME"
+          echo "VERSION = $VERSION"
+          echo ""
+          echo "Variables de entorno del step:"
+          echo "STEP_VARIABLE = $STEP_VARIABLE"
+          echo "API_KEY = $API_KEY"
