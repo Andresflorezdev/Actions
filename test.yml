@@ -1,0 +1,17 @@
+key: "Hola mundo"
+
+persona:
+  name: "Juan"
+  age: 30
+  city: "New York"
+
+scripts:
+  - name: "script1"
+    description: "Este es el primer script"
+    code: |
+      print("Hola mundo")
+  - name: "script2"
+    description: "Este es el segundo script"
+    code: |
+      print("Hola mundo")
+
